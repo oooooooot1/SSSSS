@@ -3,580 +3,1654 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>احبك يا أبي</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <title>MW | الموقع الجبار - أسامة</title>
+  <meta name="description" content="الموقع الشامل لحياة أسامة: تصميم، طب، ألعاب، وتفاصيل شخصية كاملة">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      direction: rtl;
+      font-family: 'Cairo', sans-serif;
     }
-
+    
+    :root {
+      --primary: #00ffcc;
+      --secondary: #ff00ff;
+      --accent: #ff5500;
+      --dark: #0a0a1a;
+      --darker: #050510;
+      --light: #ffffff;
+      --card-bg: rgba(20, 20, 40, 0.7);
+      --glow-primary: 0 0 15px var(--primary);
+      --glow-secondary: 0 0 15px var(--secondary);
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
     body {
-      background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Tajawal', Arial, sans-serif;
+      background: linear-gradient(135deg, var(--darker), var(--dark), #1a1a2e);
+      color: var(--light);
+      overflow-x: hidden;
       position: relative;
-      color: white;
+      min-height: 100vh;
+      padding-bottom: 80px;
     }
-
-    .container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 2;
-    }
-
-    .big-heart {
-      position: relative;
-      width: 300px;
-      height: 300px;
-      margin-bottom: 30px;
-      transform-style: preserve-3d;
-      animation: heartbeat 1.5s infinite alternate;
-      filter: drop-shadow(0 0 15px rgba(0, 100, 255, 0.5));
-    }
-
-    @keyframes heartbeat {
-      0% {
-        transform: scale(1);
-      }
-      100% {
-        transform: scale(1.1);
-      }
-    }
-
-    .heart {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background: #0066ff;
-      transform: rotate(45deg);
-      box-shadow: 0 0 40px rgba(0, 102, 255, 0.5);
-      animation: float 6s infinite;
-    }
-
-    .heart::before,
-    .heart::after {
+    
+    body::before {
       content: "";
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background: #0066ff;
-      border-radius: 50%;
-    }
-
-    .heart::before {
-      top: -15px;
-      left: 0;
-    }
-
-    .heart::after {
-      left: -15px;
-      top: 0;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) rotate(45deg) scale(1);
-        opacity: 1;
-        filter: hue-rotate(0deg);
-      }
-      25% {
-        transform: translateY(-20px) rotate(65deg) scale(1.1);
-        filter: hue-rotate(45deg);
-      }
-      50% {
-        transform: translateY(0) rotate(45deg) scale(1);
-        filter: hue-rotate(90deg);
-      }
-      75% {
-        transform: translateY(20px) rotate(25deg) scale(0.9);
-        filter: hue-rotate(45deg);
-      }
-    }
-
-    .title {
-      position: absolute;
-      top: 40px;
-      width: 100%;
-      text-align: center;
-      color: white;
-      font-size: 4em;
-      font-weight: bold;
-      text-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 100, 255, 0.3);
-      animation: fadeIn 2s forwards, glow 3s infinite alternate;
-      letter-spacing: 2px;
-    }
-
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 100, 255, 0.3);
-      }
-      100% {
-        text-shadow: 0 0 25px rgba(0, 0, 0, 0.4), 0 0 50px rgba(0, 100, 255, 0.5);
-      }
-    }
-
-    .message {
-      color: white;
-      font-size: 1.6em;
-      text-align: center;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      max-width: 80%;
-      line-height: 1.8;
-      animation: fadeInUp 2s forwards;
-      animation-delay: 1s;
-      margin-top: 20px;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px 30px;
-      border-radius: 20px;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    .particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-
-    .particle {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      animation: particleFloat linear infinite;
-    }
-
-    @keyframes particleFloat {
-      0% {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-20px);
-        opacity: 0;
-      }
-    }
-
-    /* Random floating hearts */
-    .floating-hearts {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(0, 255, 204, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.1) 0%, transparent 40%),
+        repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 11px),
+        repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 11px);
+      z-index: -1;
       pointer-events: none;
-      z-index: 1;
     }
-
-    .floating-heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: rgba(255, 255, 255, 0.8);
-      transform: rotate(45deg);
-      animation: floatRandom linear infinite;
+    
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(10, 10, 25, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     }
-
-    .floating-heart::before,
-    .floating-heart::after {
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo-img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 15px var(--primary);
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: var(--glow-primary);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+    
+    .nav-link {
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      color: #ffffff;
+    }
+    
+    .nav-link::before {
       content: "";
       position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary);
+    }
+    
+    .nav-link.active {
+      background: rgba(0, 255, 204, 0.2);
+      color: var(--primary);
+      box-shadow: var(--glow-primary);
+    }
+    
+    .nav-link.active::before {
+      width: 100%;
+    }
+    
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 35px;
+      height: 25px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    .mobile-toggle span {
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    
+    /* Mobile Menu */
+    #mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 250px;
+      height: 100%;
+      background: rgba(15, 15, 35, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 80px 20px 20px;
+      z-index: 999;
+      transition: right 0.4s ease;
+      overflow-y: auto;
+    }
+    
+    #mobile-menu.active {
+      right: 0;
+    }
+    
+    #mobile-menu .nav-link {
+      display: block;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      background: rgba(0, 255, 204, 0.1);
+      color: #ffffff;
+    }
+    
+    /* Clock Box */
+    .clock-box {
+      position: fixed;
+      top: 80px;
+      left: 20px;
+      border: 2px solid;
+      padding: 10px 15px;
+      border-image: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff) 1;
+      animation: borderGlow 4s infinite;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      text-align: center;
+      color: white;
+      font-size: 1.2rem;
+      z-index: 900;
+    }
+    
+    @keyframes borderGlow {
+      0% { border-image-source: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff); }
+      100% { border-image-source: linear-gradient(405deg, #ff0000, #00ff00, #0000ff, #ff00ff); }
+    }
+    
+    /* Audio Control */
+    .audio-control {
+      position: fixed;
+      bottom: 90px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 900;
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    }
+    
+    .audio-control i {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .audio-control:hover {
+      transform: scale(1.1);
+    }
+    
+    /* Main Content */
+    main {
+      padding-top: 100px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 100px 30px 50px;
+    }
+    
+    section {
+      margin-bottom: 50px;
+      padding: 30px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+      position: relative;
+      padding-bottom: 15px;
+      display: inline-block;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
+    }
+    
+    h3 {
+      font-size: 1.8rem;
+      margin: 20px 0 15px;
+      color: var(--primary);
+      position: relative;
+      padding-right: 15px;
+    }
+    
+    h3::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--secondary);
+      border-radius: 50%;
+      box-shadow: var(--glow-secondary);
+    }
+    
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+    
+    strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    /* Hero Section */
+    #hero {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at center, rgba(10, 15, 30, 0.8), rgba(5, 10, 20, 0.9));
+      border-radius: 0;
+      margin-bottom: 70px;
+    }
+    
+    .hero-content {
+      max-width: 900px;
+      z-index: 2;
+    }
+    
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: var(--primary);
+    }
+    
+    .hero-bio {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+      color: #ffffff;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 15px 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--dark);
+      font-size: 1.3rem;
+      font-weight: 700;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 25px rgba(0, 255, 204, 0.4);
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 35px rgba(0, 255, 204, 0.6);
+    }
+    
+    /* Floating Elements */
+    .floating {
+      position: absolute;
+      animation: float 6s infinite ease-in-out;
+      z-index: 1;
+      opacity: 0.7;
+    }
+    
+    .floating:nth-child(1) {
+      top: 15%;
+      right: 10%;
+      width: 100px;
+      height: 100px;
+      background: var(--primary);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      filter: blur(15px);
+      animation-delay: 0s;
+    }
+    
+    .floating:nth-child(2) {
+      top: 40%;
+      left: 15%;
+      width: 150px;
+      height: 150px;
+      background: var(--secondary);
+      border-radius: 50%;
+      filter: blur(25px);
+      animation-delay: -2s;
+    }
+    
+    .floating:nth-child(3) {
+      bottom: 20%;
+      right: 25%;
+      width: 80px;
+      height: 80px;
+      background: var(--accent);
+      border-radius: 20% 80% 80% 20% / 20% 20% 80% 80%;
+      filter: blur(20px);
+      animation-delay: -4s;
+    }
+    
+    /* CV Section */
+    .personal-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .info-card {
+      background: rgba(15, 15, 35, 0.7);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      color: #ffffff;
+    }
+    
+    .info-card h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    /* Timeline */
+    .timeline {
+      position: relative;
+      margin: 50px 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      z-index: 1;
+    }
+    
+    .event {
+      position: relative;
+      width: calc(50% - 40px);
+      padding: 25px;
+      margin-bottom: 30px;
+      background: rgba(15, 15, 35, 0.8);
+      border-radius: 15px;
+      border: 1px solid rgba(0, 255, 204, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+      color: #ffffff;
+    }
+    
+    .event:nth-child(odd) {
+      margin-right: auto;
+    }
+    
+    .event:nth-child(even) {
+      margin-left: auto;
+    }
+    
+    .event::before {
+      content: '';
+      position: absolute;
+      top: 30px;
       width: 20px;
       height: 20px;
-      background: rgba(255, 255, 255, 0.8);
+      background: var(--secondary);
       border-radius: 50%;
-    }
-
-    .floating-heart::before {
-      top: -10px;
-      left: 0;
-    }
-
-    .floating-heart::after {
-      left: -10px;
-      top: 0;
-    }
-
-    @keyframes floatRandom {
-      0% {
-        transform: translateY(100vh) translateX(0) rotate(45deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.8;
-      }
-      90% {
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(-100px) translateX(var(--translate-x)) rotate(45deg);
-        opacity: 0;
-      }
-    }
-
-    .heart-trail {
-      position: absolute;
-      pointer-events: none;
+      box-shadow: 0 0 15px var(--secondary);
       z-index: 3;
     }
-
-    .heart-trail .mini-heart {
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      background: white;
-      transform: rotate(45deg);
-      opacity: 0.8;
-      animation: fadeOut 1s forwards;
+    
+    .event:nth-child(odd)::before {
+      right: -52px;
     }
-
-    .heart-trail .mini-heart::before,
-    .heart-trail .mini-heart::after {
+    
+    .event:nth-child(even)::before {
+      left: -52px;
+    }
+    
+    .event-year {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .skill-card {
+      background: rgba(15, 15, 35, 0.8);
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+      color: #ffffff;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+    }
+    
+    .skill-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .skill-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 255, 204, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .skill-title {
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+    
+    .skill-bar {
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      margin: 15px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 5px;
+      position: relative;
+    }
+    
+    .skill-progress::after {
       content: "";
       position: absolute;
-      width: 15px;
-      height: 15px;
-      background: white;
-      border-radius: 50%;
-    }
-
-    .heart-trail .mini-heart::before {
-      top: -7.5px;
-      left: 0;
-    }
-
-    .heart-trail .mini-heart::after {
-      left: -7.5px;
-      top: 0;
-    }
-
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        transform: rotate(45deg) scale(0.5);
-      }
-    }
-
-    /* Overlay gradient */
-    .overlay {
-      position: fixed;
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shine 2s infinite;
+    }
+    
+    .skill-level {
+      text-align: left;
+      font-size: 0.9rem;
+      color: var(--primary);
+    }
+    
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      height: 250px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+    
+    .gallery-img {
       width: 100%;
       height: 100%;
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0) 0%, rgba(0,80,255,0.2) 100%);
-      pointer-events: none;
-      z-index: 1;
+      object-fit: cover;
+      transition: transform 0.5s ease;
     }
-
-    /* Responsive styles */
-    @media (max-width: 768px) {
-      .title {
-        font-size: 3em;
-        top: 30px;
+    
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    .gallery-title {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    
+    /* Health Section */
+    .health-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .health-card {
+      background: rgba(15, 15, 35, 0.8);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      color: #ffffff;
+    }
+    
+    .health-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 25px rgba(0, 255, 204, 0.3);
+    }
+    
+    .health-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    .health-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    
+    .health-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--secondary);
+      transition: all 0.5s ease;
+    }
+    
+    /* Friends Section */
+    .friends-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .friend-card {
+      background: rgba(15, 15, 35, 0.8);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      color: #ffffff;
+    }
+    
+    .friend-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .friend-header {
+      padding: 20px;
+      background: rgba(0, 255, 204, 0.1);
+      text-align: center;
+    }
+    
+    .friend-name {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+    
+    .friend-relation {
+      color: var(--secondary);
+      font-size: 1.1rem;
+    }
+    
+    .friend-body {
+      padding: 20px;
+    }
+    
+    .friend-desc {
+      margin-bottom: 15px;
+    }
+    
+    .friend-memories {
+      font-style: italic;
+      color: #aaaaff;
+      border-right: 2px solid var(--secondary);
+      padding-right: 10px;
+    }
+    
+    /* Food Section */
+    .food-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .food-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(15, 15, 35, 0.8);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      color: #ffffff;
+    }
+    
+    .food-item:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+    
+    .food-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      min-width: 60px;
+      text-align: center;
+    }
+    
+    .food-content h4 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+    
+    /* Private Section */
+    .private-container {
+      background: rgba(5, 5, 15, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      border: 2px solid var(--secondary);
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+      text-align: center;
+      margin-top: 30px;
+      color: #ffffff;
+    }
+    
+    .password-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin: 30px auto;
+      gap: 20px;
+    }
+    
+    .password-input {
+      padding: 15px 20px;
+      border-radius: 50px;
+      border: 2px solid var(--primary);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 1.2rem;
+      text-align: center;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    
+    .password-input:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    }
+    
+    .private-content {
+      display: none;
+      margin-top: 30px;
+      padding: 30px;
+      background: rgba(10, 10, 25, 0.8);
+      border-radius: 15px;
+      border: 1px solid var(--primary);
+      color: #ffffff;
+    }
+    
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(10, 10, 25, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 255, 204, 0.2);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .footer-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .footer-logo {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 8px var(--primary);
+    }
+    
+    .copyright {
+      font-size: 1.1rem;
+      color: #ffffff;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-link {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: rgba(0, 255, 204, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    @keyframes borderGlow {
+      0% { border-image-source: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff); }
+      100% { border-image-source: linear-gradient(405deg, #ff0000, #00ff00, #0000ff, #ff00ff); }
+    }
+    
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .timeline::before {
+        right: 30px;
       }
       
-      .message {
-        font-size: 1.3em;
-        max-width: 90%;
-        padding: 15px 20px;
+      .event {
+        width: calc(100% - 80px);
       }
       
-      .big-heart {
-        width: 250px;
-        height: 250px;
+      .event:nth-child(odd) {
+        margin-right: 0;
+      }
+      
+      .event:nth-child(even) {
+        margin-left: 0;
+      }
+      
+      .event:nth-child(odd)::before {
+        right: -46px;
+      }
+      
+      .event:nth-child(even)::before {
+        left: auto;
+        right: -46px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-toggle {
+        display: flex;
+      }
+      
+      .hero-title {
+        font-size: 3rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+      
+      .hero-bio {
+        font-size: 1.1rem;
+      }
+      
+      footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 5px;
+      }
+      
+      .audio-control {
+        bottom: 130px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.3rem;
+      }
+      
+      section {
+        padding: 20px;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      .cta-button {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+      }
+      
+      .floating {
+        display: none;
+      }
+      
+      .event {
+        width: calc(100% - 40px);
+      }
+      
+      .event::before {
+        display: none;
+      }
+      
+      .clock-box {
+        top: 70px;
+        left: 10px;
+        padding: 8px 12px;
+        font-size: 1rem;
+      }
+      
+      .audio-control {
+        bottom: 120px;
+        left: 10px;
+        width: 45px;
+        height: 45px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="overlay"></div>
-  <div class="particles" id="particles"></div>
-  <div class="floating-hearts" id="floatingHearts"></div>
-  
-  <div class="container">
-    <div class="title">احبك يا أبي</div>
-    
-    <div class="big-heart" id="bigHeart">
-      <!-- Hearts will be added by JavaScript -->
-    </div>
-    
-    <div class="message">اللهم احفظ أبي وارزقه الصحة والعافية وطول العمر، اللهم اجعله من الصالحين وأمدد في عمره على طاعتك، اللهم ارزقه السعادة والرضا واجعلني قرة عين له</div>
-  </div>
-  
-  <!-- Audio element - removed autoplay -->
-  <audio id="background-music" loop>
-    <source src="ommy.mp3" type="audio/mp3">
-    متصفحك لا يدعم عنصر الصوت.
+  <!-- Audio Background -->
+  <audio id="backgroundAudio" loop>
+    <source src="ss.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
   
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="99.png" alt="MW Logo" class="logo-img">
+      <div class="logo-text">أسامة | الموقع الجبار</div>
+    </div>
+    
+    <nav class="nav-links">
+      <a href="#hero" class="nav-link active">الرئيسية</a>
+      <a href="#cv" class="nav-link">السيرة الذاتية</a>
+      <a href="#skills" class="nav-link">المهارات</a>
+      <a href="#gallery" class="nav-link">المعرض</a>
+      <a href="#private" class="nav-link">الخاص</a>
+    </nav>
+    
+    <div class="mobile-toggle" id="mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu">
+    <a href="#hero" class="nav-link active">الرئيسية</a>
+    <a href="#cv" class="nav-link">السيرة الذاتية</a>
+    <a href="#skills" class="nav-link">المهارات</a>
+    <a href="#gallery" class="nav-link">المعرض</a>
+    <a href="#private" class="nav-link">الخاص</a>
+    <a href="#health" class="nav-link">صحتي</a>
+    <a href="#friends" class="nav-link">الأحباب</a>
+    <a href="#food" class="nav-link">الأكلات</a>
+  </div>
+  
+  <!-- Clock Box -->
+  <div class="clock-box">
+    <div>11:11</div>
+    <div>1111/1/1</div>
+  </div>
+  
+  <!-- Audio Control -->
+  <div class="audio-control" id="audioControl">
+    <i class="fas fa-volume-mute"></i>
+  </div>
+  
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+    
+    <div class="hero-content">
+      <h1 class="hero-title">أسامة بشير حسين علي الددادَة</h1>
+      <h2 class="hero-subtitle">مصمم ثلاثي الأبعاد | طالب طب | مبدع في عالم الألعاب</h2>
+      <p class="hero-bio">
+        مرحبًا بك في عالمي الشامل! أنا أسامة، شاب سعودي مولود في القريات عام 2004، 
+        طالب طب بشري في السنة الأولى، ومصمم ثلاثي الأبعاد محترف. هذا الموقع يمثل رحلتي، 
+        إنجازاتي، شغفي، وتفاصيل حياتي الكاملة التي تجمع بين الطب والتصميم والألعاب.
+      </p>
+      <div>
+        <a href="#cv" class="cta-button">اكتشف سيرتي</a>
+        <a href="#private" class="cta-button">الدخول للخاص</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CV Section -->
+  <section id="cv">
+    <h2>السيرة الذاتية الكاملة</h2>
+    
+    <div class="personal-info-grid">
+      <div class="info-card">
+        <h4><i class="fas fa-user"></i> المعلومات الشخصية</h4>
+        <p><strong>الاسم الكامل:</strong> أسامة بشير حسين علي الددادَة</p>
+        <p><strong>تاريخ الميلاد:</strong> 15 ديسمبر 2004 (20 سنة)</p>
+        <p><strong>مكان الولادة:</strong> القريات، السعودية</p>
+        <p><strong>زمرة الدم:</strong> O+</p>
+        <p><strong>الجنسية:</strong> سعودي</p>
+        <p><strong>الإقامة:</strong> الرياض، حي النسيم</p>
+      </div>
+      
+      <div class="info-card">
+        <h4><i class="fas fa-heart"></i> الاهتمامات والهوايات</h4>
+        <p><strong>الهوايات:</strong> تصميم 3D، ألعاب الفيديو، كرة السلة، كرة القدم، تمارين الكاليثنكس</p>
+        <p><strong>الألعاب المفضلة:</strong> Call of Duty، Fortnite، FIFA، Genshin Impact</p>
+        <p><strong>الموسيقى:</strong> Hip-hop، موسيقى الألعاب، موسيقى إلكترونية</p>
+        <p><strong>الأنمي المفضل:</strong> Attack on Titan، Demon Slayer، One Piece</p>
+        <p><strong>الطعام المفضل:</strong> المندي، البيتزا، المطبق، الأفوكادو</p>
+      </div>
+      
+      <div class="info-card">
+        <h4><i class="fas fa-graduation-cap"></i> التعليم والمؤهلات</h4>
+        <p><strong>التخصص الحالي:</strong> الطب البشري (السنة الأولى)</p>
+        <p><strong>الشهادات:</strong> دبلوم تصميم ثلاثي الأبعاد، شهادة Unreal Engine 5</p>
+        <p><strong>اللغات:</strong> العربية (اللغة الأم)، الإنجليزية (متقدمة)</p>
+        <p><strong>المهارات التقنية:</strong> 22 برنامج تصميم (Blender, 3ds Max, SketchUp, UE5...)</p>
+        <p><strong>الطموح:</strong> أن أصبح مصمم ألعاب عالمي ومتخصص في الواقع الافتراضي</p>
+      </div>
+    </div>
+    
+    <h3>رحلة حياتي</h3>
+    <div class="timeline">
+      <div class="event">
+        <div class="event-year"><i class="fas fa-baby"></i> 2004</div>
+        <p>ولدت في مدينة القريات شمال السعودية، كنت الطفل الأول في عائلتي. قضيت طفولتي بين القريات والرياض حيث عمل والدي.</p>
+      </div>
+      
+      <div class="event">
+        <div class="event-year"><i class="fas fa-laptop"></i> 2016</div>
+        <p>بداية رحلتي مع التصميم ثلاثي الأبعاد عندما حصلت على جهازي الأول. بدأت بتعلم SketchUp من خلال دروس على اليوتيوب، وأنشأت أول نموذج ثلاثي الأبعاد (كرسي بسيط).</p>
+      </div>
+      
+      <div class="event">
+        <div class="event-year"><i class="fas fa-cube"></i> 2017</div>
+        <p>توسعت في تعلم التصميم وأتقنت Blender و3ds Max. صممت أول مشروع متكامل (غرفة معيشة) وشاركته في منتديات التصميم العربية.</p>
+      </div>
+      
+      <div class="event">
+        <div class="event-year"><i class="fas fa-money-bill-wave"></i> 2018</div>
+        <p>أول مشروع ربحي: تصميم داخلي لمحل ملابس في الرياض. حققت منه 1500 ريال وكانت بداية عملي المحترف في التصميم.</p>
+      </div>
+      
+      <div class="event">
+        <div class="event-year"><i class="fas fa-globe"></i> 2019</div>
+        <p>بدأت التسويق لأعمالي عبر الإنترنت وعملت مع عملاء من السعودية والإمارات والكويت. تخصصت في تصميم الواجهات التجارية والديكور الداخلي.</p>
+      </div>
+      
+      <div class="event">
+        <div class="event-year"><i class="fas fa-gamepad"></i> 2022</div>
+        <p>التحقت بكلية الطب مع الاستمرار في التصميم. بدأت التعمق في صناعة الألعاب باستخدام Unreal Engine 5، وأنشأت أول نموذج بيئة لعب كاملة.</p>
+      </div>
+      
+      <div class="event">
+        <div class="event-year"><i class="fas fa-rocket"></i> 2025</div>
+        <p>أنشأت هذا الموقع الشامل لتوثيق رحلتي ومشاركة معرفتي مع العالم. أعمل حالياً على تطوير لعبة ثلاثية الأبعاد بمفاهيم طبية فريدة.</p>
+      </div>
+    </div>
+    
+    <h3>المشاريع البارزة</h3>
+    <div class="info-card">
+      <ul>
+        <li><strong>2018:</strong> تصميم داخلي لمحل ملابس في الرياض (أول مشروع ربحي)</li>
+        <li><strong>2019:</strong> تصميم نماذج ثلاثية الأبعاد لموقع بيع أثاث إلكتروني</li>
+        <li><strong>2020:</strong> تطوير واجهات ثلاثية الأبعاد لمعرض شركة هندسية في دبي</li>
+        <li><strong>2022:</strong> تصميم بيئة لعب كاملة باستخدام Unreal Engine 5</li>
+        <li><strong>2024:</strong> مشروع ديكور لفيلا سكنية في حي الرحمانية بالرياض</li>
+        <li><strong>2025:</strong> تطوير أصول ثلاثية الأبعاد لمشروع لعبة مستقلة</li>
+      </ul>
+    </div>
+  </section>
+  
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>المهارات الاحترافية</h2>
+    
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon"><i class="fas fa-cube"></i></div>
+          <h3 class="skill-title">تصميم ثلاثي الأبعاد</h3>
+        </div>
+        <p>خبرة 9 سنوات في النمذجة ثلاثية الأبعاد، الإكساء، الإضاءة، والإخراج النهائي</p>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 98%"></div>
+        </div>
+        <div class="skill-level">98% إتقان</div>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon"><i class="fas fa-gamepad"></i></div>
+          <h3 class="skill-title">Unreal Engine 5</h3>
+        </div>
+        <p>تصميم بيئات ألعاب، إعداد الإضاءة الديناميكية، وإنشاء مواد معقدة</p>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 92%"></div>
+        </div>
+        <div class="skill-level">92% إتقان</div>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon"><i class="fas fa-home"></i></div>
+          <h3 class="skill-title">تصميم الديكور الداخلي</h3>
+        </div>
+        <p>تصميم مساحات سكنية وتجارية مع مراعاة الوظائفية والجماليات</p>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 95%"></div>
+        </div>
+        <div class="skill-level">95% إتقان</div>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon"><i class="fas fa-heartbeat"></i></div>
+          <h3 class="skill-title">المعرفة الطبية</h3>
+        </div>
+        <p>تشريح، مصطلحات طبية، أساسيات الأمراض، وإسعافات أولية</p>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 85%"></div>
+        </div>
+        <div class="skill-level">85% إتقان</div>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon"><i class="fas fa-basketball-ball"></i></div>
+          <h3 class="skill-title">اللياقة البدنية</h3>
+        </div>
+        <p>تمارين كاليثنكس، كرة السلة، كرة القدم، وتمارين التحمل</p>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 90%"></div>
+        </div>
+        <div class="skill-level">90% إتقان</div>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon"><i class="fas fa-users"></i></div>
+          <h3 class="skill-title">التواصل والعمل الجماعي</h3>
+        </div>
+        <p>إدارة المشاريع، التعامل مع العملاء، والعمل ضمن فريق متكامل</p>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 88%"></div>
+        </div>
+        <div class="skill-level">88% إتقان</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Gallery Section -->
+  <section id="gallery">
+    <h2>معرض أعمالي</h2>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="ChatGPT Image 2 مايو 2025، 06_37_04 م.png" alt="مشروع تصميم داخلي" class="gallery-img">
+        <div class="gallery-overlay">
+          <h4 class="gallery-title">تصميم داخلي لمطعم</h4>
+          <p>مشروع 2020 - الرياض</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="ChatGPT Image 2 مايو 2025، 06_37_04 م.png" alt="بيئة ألعاب" class="gallery-img">
+        <div class="gallery-overlay">
+          <h4 class="gallery-title">بيئة خيالية للألعاب</h4>
+          <p>Unreal Engine 5 - 2023</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="ChatGPT Image 2 مايو 2025، 06_37_04 م.png" alt="بيئة ألعاب" class="gallery-img">
+        <div class="gallery-overlay">
+          <h4 class="gallery-title">بيئة خيالية للألعاب</h4>
+          <p>Unreal Engine 5 - 2023</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="ChatGPT Image 2 مايو 2025، 06_37_04 م.png" alt="تصميم تجاري" class="gallery-img">
+        <div class="gallery-overlay">
+          <h4 class="gallery-title">واجهة محل تجاري</h4>
+          <p>مشروع 2019 - دبي</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Health Section -->
+  <section id="health">
+    <h2>حالتي الصحية عبر طقنيه mvx</h2>
+    
+    <div class="health-grid">
+      <div class="health-card">
+        <div class="health-icon"><i class="fas fa-lungs"></i></div>
+        <h3 class="health-title">معدل التنفس</h3>
+        <div class="health-value" id="breath">16 bpm</div>
+      </div>
+      
+      <div class="health-card">
+        <div class="health-icon"><i class="fas fa-heartbeat"></i></div>
+        <h3 class="health-title">ضغط الدم</h3>
+        <div class="health-value" id="bp">118/76</div>
+      </div>
+      
+      <div class="health-card">
+        <div class="health-icon"><i class="fas fa-smile"></i></div>
+        <h3 class="health-title">المزاج العام</h3>
+        <div class="health-value" id="mood">ممتاز</div>
+      </div>
+      
+      <div class="health-card">
+        <div class="health-icon"><i class="fas fa-tired"></i></div>
+        <h3 class="health-title">مستوى التوتر</h3>
+        <div class="health-value" id="stress">23%</div>
+      </div>
+      
+      <div class="health-card">
+        <div class="health-icon"><i class="fas fa-flask"></i></div>
+        <h3 class="health-title">السكر في الدم</h3>
+        <div class="health-value" id="sugar">92 mg/dL</div>
+      </div>
+      
+      <div class="health-card">
+        <div class="health-icon"><i class="fas fa-bed"></i></div>
+        <h3 class="health-title">جودة النوم</h3>
+        <div class="health-value" id="sleep">87%</div>
+      </div>
+    </div>
+    
+    <div class="info-card" style="margin-top: 30px;">
+      <h4><i class="fas fa-notes-medical"></i> الملاحظات الطبية</h4>
+      <ul>
+        <li>حساسية من الغبار (تظهر في الربيع)</li>
+        <li>فحوصات دورية كل 6 أشهر</li>
+        <li>متابعة مع طبيب باطنية سنوياً</li>
+        <li>مكملات فيتامين د بسبب نقص التعرض للشمس</li>
+        <li>تمارين تنفس يومية لمقاومة التوتر</li>
+      </ul>
+    </div>
+  </section>
+  
+  <!-- Friends Section -->
+  <section id="friends">
+    <h2>الأحباب والأصدقاء</h2>
+    
+    <div class="friends-grid">
+      <div class="friend-card">
+        <div class="friend-header">
+          <h3 class="friend-name">فاطمة</h3>
+          <p class="friend-relation">الأم</p>
+        </div>
+        <div class="friend-body">
+          <p class="friend-desc">دائماً مصدر الدعم والحنان. تعمل معلمة لغة عربية. ولدت في القريات عام 1975.</p>
+          <p class="friend-memories">"أمي علمتني الصبر وقوة الإرادة. لا أنسى كيف كانت تسهر معي أثناء الدراسة."</p>
+        </div>
+      </div>
+      
+      <div class="friend-card">
+        <div class="friend-header">
+          <h3 class="friend-name">بشير</h3>
+          <p class="friend-relation">الأب</p>
+        </div>
+        <div class="friend-body">
+          <p class="friend-desc">مهندس مدني، يعمل في شركة مقاولات. مولود في الرياض عام 1970.</p>
+          <p class="friend-memories">"والدي هو من شجعني على التصميم واشترى لي أول كمبيوتر قوي."</p>
+        </div>
+      </div>
+      
+      <div class="friend-card">
+        <div class="friend-header">
+          <h3 class="friend-name">خالد</h3>
+          <p class="friend-relation">الأخ</p>
+        </div>
+        <div class="friend-body">
+          <p class="friend-desc">أصغر مني بسنتين، يدرس هندسة الحاسب في جامعة الملك سعود.</p>
+          <p class="friend-memories">"شاركني في أول مشروع تصميم وكان ناقداً بناءً لم أعرف قيمته إلا لاحقاً."</p>
+        </div>
+      </div>
+      
+      <div class="friend-card">
+        <div class="friend-header">
+          <h3 class="friend-name">محمد</h3>
+          <p class="friend-relation">الجار والصديق</p>
+        </div>
+        <div class="friend-body">
+          <p class="friend-desc">صديق الطفولة، يعمل مصمم جرافيك. ولدنا في نفس الحي ونفس المستشفى.</p>
+          <p class="friend-memories">"كنا نلعب كرة القدم كل يوم بعد المدرسة ونحلم بأن نصبح مصممين مشهورين."</p>
+        </div>
+      </div>
+      
+      <div class="friend-card">
+        <div class="friend-header">
+          <h3 class="friend-name">سارة</h3>
+          <p class="friend-relation">الصديقة</p>
+        </div>
+        <div class="friend-body">
+          <p class="friend-desc">زميلة دراسة في كلية الطب، تخصص أطفال. تهوى الرسم والتصوير.</p>
+          <p class="friend-memories">"ساعدتني في فهم مواد التشريح وكانت شريكاً ممتازاً في مشاريع التصميم الطبي."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Food Section -->
+  <section id="food">
+    <h2>الأكلات المفضلة</h2>
+    
+    <div class="food-list">
+      <div class="food-item">
+        <div class="food-icon"><i class="fas fa-utensils"></i></div>
+        <div class="food-content">
+          <h4>مندي لحم ضأن</h4>
+          <p>الطبق المفضل في المناسبات، يذكرني بزيارات العائلة للقريات. أفضل ما يكون مع الرز البسمتي والسلطة الخضراء.</p>
+        </div>
+      </div>
+      
+      <div class="food-item">
+        <div class="food-icon"><i class="fas fa-pizza-slice"></i></div>
+        <div class="food-content">
+          <h4>بيتزا بالجبن المزدوج</h4>
+          <p>الوجبة المفضلة أثناء جلسات التصميم الطويلة. عادةً ما أطلبها مع بيبروني إضافي وزيتون أسود.</p>
+        </div>
+      </div>
+      
+      <div class="food-item">
+        <div class="food-icon"><i class="fas fa-bread-slice"></i></div>
+        <div class="food-content">
+          <h4>مطبق دجاج</h4>
+          <p>الوجبة الخفيفة المثالية. أفضل المطبق المقرمش مع دجاج مشوي وخضروات طازجة.</p>
+        </div>
+      </div>
+      
+      <div class="food-item">
+        <div class="food-icon"><i class="fas fa-apple-alt"></i></div>
+        <div class="food-content">
+          <h4>سلطة أفوكادو مع تونة</h4>
+          <p>الوجبة الصحية المفضلة. أعدها بنفسي مع إضافة بذور الشيا وزيت الزيتون.</p>
+        </div>
+      </div>
+      
+      <div class="food-item">
+        <div class="food-icon"><i class="fas fa-coffee"></i></div>
+        <div class="food-content">
+          <h4>عصير مانجو طازج</h4>
+          <p>المشروب المفضل في الصيف. أفضل العصير الطازج بدون سكر مضاف.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Private Section -->
+  <section id="private">
+    <h2>المنطقة الخاصة</h2>
+    
+    <div class="private-container">
+      <p>هذه المنطقة تحتوي على مشاريعي السرية، أفكاري المستقبلية، وملاحظاتي الشخصية التي لا أشاركها مع الجميع.</p>
+      
+      <div class="password-form">
+        <input type="password" class="password-input" placeholder="أدخل كلمة المرور" id="privatePassword">
+        <button class="cta-button" onclick="checkPassword()">الدخول</button>
+      </div>
+      
+      <div class="private-content" id="privateContent">
+        <h3>المحتوى الخاص</h3>
+        
+        <div class="info-card" style="margin: 20px 0;">
+          <h4><i class="fas fa-gamepad"></i> مشروع اللعبة السرية "MediVerse"</h4>
+          <ul>
+            <li>لعبة ثلاثية الأبعاد تجمع بين الطب والتصميم</li>
+            <li>اللاعب يدخل جسم الإنسان لمواجهة الأمراض</li>
+            <li>تصميم بيئات داخل أعضاء الجسم البشري</li>
+            <li>أسلوب لعب تعليمي مع تحديات واقعية</li>
+            <li>قيد التطوير باستخدام Unreal Engine 5</li>
+          </ul>
+        </div>
+        
+        <div class="info-card" style="margin: 20px 0;">
+          <h4><i class="fas fa-lightbulb"></i> أفكار مستقبلية</h4>
+          <ul>
+            <li>تطبيق واقع معزز لتصميم الديكور الداخلي</li>
+            <li>منصة تعليمية لتصميم ثلاثي الأبعاد بالعربية</li>
+            <li>دمج مفاهيم طبية في تصميم الألعاب التعليمية</li>
+            <li>تعاون مع مستشفيات لتصميم بيئات افتراضية للعلاج</li>
+          </ul>
+        </div>
+        
+        <div class="info-card" style="margin: 20px 0;">
+          <h4><i class="fas fa-book"></i> الملاحظات الشخصية</h4>
+          <p>"أعتقد أن مستقبل الطب سيكون في الواقع الافتراضي. يمكننا تدريب الأطباء في بيئات محاكاة واقعية."</p>
+          <p>"التوازن بين الطب والتصميم صعب لكنه ممتع. كل منهما يغذي الآخر."</p>
+          <p>"هدفي أن أترك أثراً في عالم التصميم الطبي وأن أساعد في تطوير التعليم الطبي."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <img src="99.png" alt="MW Logo" class="footer-logo">
+      <div class="copyright">جميع الحقوق محفوظة لـ MW 2025</div>
+    </div>
+    
+    <div class="social-links">
+      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+  
   <script>
-    // DOM Elements
-    const bigHeart = document.getElementById('bigHeart');
-    const particles = document.getElementById('particles');
-    const floatingHearts = document.getElementById('floatingHearts');
-    const backgroundMusic = document.getElementById('background-music');
+    // حل مشكلة الصوت
+    const audioElement = document.getElementById('backgroundAudio');
+    const audioControl = document.getElementById('audioControl');
+    let isAudioPlaying = false;
     
-    // Audio handling
-    let audioPlayed = false;
-
-    // Play music on any user interaction
-    function playAudio() {
-      if (!audioPlayed) {
-        backgroundMusic.play()
-          .then(() => {
-            audioPlayed = true;
-          })
-          .catch(error => {
-            console.log('Playback prevented:', error);
+    // حل مشكلة التشغيل التلقائي في المتصفحات
+    function initAudio() {
+      // إعادة تعيين الصوت
+      audioElement.volume = 0.5;
+      audioElement.loop = true;
+      
+      // إضافة حدث للتحكم في الصوت
+      audioControl.addEventListener('click', toggleAudio);
+      
+      // محاولة تشغيل الصوت عند تفاعل المستخدم
+      document.addEventListener('click', firstInteractionAudio, { once: true });
+    }
+    
+    function firstInteractionAudio() {
+      if (!isAudioPlaying) {
+        // محاولة تشغيل الصوت
+        const playPromise = audioElement.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            // الصوت يعمل
+            isAudioPlaying = true;
+            audioControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+          }).catch(error => {
+            // خطأ في التشغيل
+            console.log("تشغيل الصوت يتطلب تفاعل المستخدم:", error);
+            audioControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
           });
-      }
-    }
-
-    // Add event listeners for various user interactions
-    ['click', 'touchstart', 'keydown', 'mousemove'].forEach(event => {
-      document.addEventListener(event, playAudio, { once: true });
-    });
-
-    // Create hearts in a heart shape
-    function createHearts() {
-      // Clear existing hearts
-      bigHeart.innerHTML = '';
-      
-      // Create hearts in a heart shape
-      const numHearts = 40;
-      const heartRadius = 120;
-      
-      for (let i = 0; i < numHearts; i++) {
-        // Create heart element
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        
-        // Position in a heart shape
-        const angle = (i / numHearts) * Math.PI * 2;
-        // Heart shape formula
-        const x = heartRadius * (16 * Math.pow(Math.sin(angle), 3)) / 16;
-        const y = heartRadius * (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle)) / 16;
-        
-        // Center the heart
-        heart.style.left = `${x + 150}px`;
-        heart.style.top = `${-y + 150}px`;
-        
-        // Randomize animation properties
-        heart.style.animationDuration = `${Math.random() * 4 + 4}s`;
-        heart.style.animationDelay = `${Math.random() * 2}s`;
-        
-        // Randomize heart sizes
-        const size = Math.random() * 20 + 15;
-        heart.style.width = `${size}px`;
-        heart.style.height = `${size}px`;
-        
-        // Randomize heart colors
-        const hue = Math.floor(Math.random() * 60) + 200; // Blue to purple
-        heart.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-        heart.style.setProperty('--heart-color', `hsl(${hue}, 100%, 50%)`);
-        
-        // Add to container
-        bigHeart.appendChild(heart);
+        }
       }
     }
     
-    // Create floating particles
-    function createParticles() {
-      particles.innerHTML = '';
-      
-      for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
+    function toggleAudio() {
+      if (isAudioPlaying) {
+        audioElement.pause();
+        audioControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
+      } else {
+        const playPromise = audioElement.play();
         
-        // Random position
-        particle.style.left = `${Math.random() * 100}%`;
-        
-        // Random size
-        const size = Math.random() * 8 + 2;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        
-        // Random animation duration
-        const duration = Math.random() * 15 + 10;
-        particle.style.animationDuration = `${duration}s`;
-        
-        // Random delay
-        particle.style.animationDelay = `${Math.random() * 5}s`;
-        
-        // Random opacity
-        particle.style.opacity = `${Math.random() * 0.5 + 0.3}`;
-        
-        particles.appendChild(particle);
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            audioControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+          }).catch(error => {
+            console.log("خطأ في تشغيل الصوت:", error);
+          });
+        }
       }
+      isAudioPlaying = !isAudioPlaying;
     }
     
-    // Create random floating hearts across the screen
-    function createFloatingHearts() {
-      floatingHearts.innerHTML = '';
+    // Health metrics random update
+    function updateHealthMetrics() {
+      const metrics = [
+        { id: 'breath', min: 14, max: 18, unit: ' bpm' },
+        { id: 'bp', values: ['115/75', '118/76', '120/78', '122/80'] },
+        { id: 'mood', values: ['ممتاز', 'جيد جداً', 'مشغول', 'مرتاح'] },
+        { id: 'stress', min: 10, max: 40, unit: '%' },
+        { id: 'sugar', min: 85, max: 100, unit: ' mg/dL' },
+        { id: 'sleep', min: 80, max: 95, unit: '%' }
+      ];
       
-      for (let i = 0; i < 60; i++) {
-        const heart = document.createElement('div');
-        heart.classList.add('floating-heart');
-        
-        // Random position
-        heart.style.left = `${Math.random() * 100}%`;
-        
-        // Random size
-        const size = Math.random() * 15 + 5;
-        heart.style.width = `${size}px`;
-        heart.style.height = `${size}px`;
-        
-        // Random animation duration
-        const duration = Math.random() * 15 + 10;
-        heart.style.animationDuration = `${duration}s`;
-        
-        // Random delay
-        heart.style.animationDelay = `${Math.random() * 10}s`;
-        
-        // Random horizontal movement
-        const translateX = (Math.random() * 200 - 100) + 'px';
-        heart.style.setProperty('--translate-x', translateX);
-        
-        // Random color
-        const hue = Math.floor(Math.random() * 60) + 200; // Blue to purple
-        const saturation = Math.floor(Math.random() * 30) + 70; // 70-100%
-        const lightness = Math.floor(Math.random() * 20) + 70; // 70-90%
-        const opacity = Math.random() * 0.4 + 0.2; // 0.2-0.6
-        
-        heart.style.backgroundColor = `hsla(${hue}, ${saturation}%, ${lightness}%, ${opacity})`;
-        heart.style.setProperty('--heart-color', `hsla(${hue}, ${saturation}%, ${lightness}%, ${opacity})`);
-        
-        // Set the same color for pseudo-elements
-        const style = document.createElement('style');
-        style.textContent = `
-          .floating-heart:nth-child(${i+1})::before,
-          .floating-heart:nth-child(${i+1})::after {
-            background: hsla(${hue}, ${saturation}%, ${lightness}%, ${opacity});
+      metrics.forEach(metric => {
+        const element = document.getElementById(metric.id);
+        if (element) {
+          if (metric.values) {
+            element.textContent = metric.values[Math.floor(Math.random() * metric.values.length)];
+          } else {
+            const value = Math.floor(Math.random() * (metric.max - metric.min + 1)) + metric.min;
+            element.textContent = value + metric.unit;
           }
-        `;
-        document.head.appendChild(style);
-        
-        floatingHearts.appendChild(heart);
+        }
+      });
+    }
+    
+    // Update health metrics every 5 seconds
+    setInterval(updateHealthMetrics, 5000);
+    
+    // Password check for private section
+    function checkPassword() {
+      const password = document.getElementById('privatePassword').value;
+      const privateContent = document.getElementById('privateContent');
+      
+      if (password === 'oorr99') {
+        privateContent.style.display = 'block';
+      } else {
+        alert('كلمة المرور غير صحيحة! حاول مرة أخرى');
       }
     }
     
-    // Heart trail effect
-    function createHeartTrail(e) {
-      const trail = document.createElement('div');
-      trail.classList.add('heart-trail');
-      
-      // Position at cursor
-      trail.style.left = `${e.clientX}px`;
-      trail.style.top = `${e.clientY}px`;
-      
-      // Create mini hearts
-      for (let i = 0; i < 3; i++) {
-        const miniHeart = document.createElement('div');
-        miniHeart.classList.add('mini-heart');
-        
-        // Random position offset
-        miniHeart.style.left = `${Math.random() * 20 - 10}px`;
-        miniHeart.style.top = `${Math.random() * 20 - 10}px`;
-        
-        // Random size
-        const size = Math.random() * 10 + 5;
-        miniHeart.style.width = `${size}px`;
-        miniHeart.style.height = `${size}px`;
-        
-        // Random color
-        const hue = Math.floor(Math.random() * 60) + 200;
-        miniHeart.style.backgroundColor = `hsl(${hue}, 100%, 60%)`;
-        miniHeart.style.setProperty('--mini-heart-color', `hsl(${hue}, 100%, 60%)`);
-        
-        trail.appendChild(miniHeart);
-      }
-      
-      document.body.appendChild(trail);
-      
-      // Remove after animation completes
-      setTimeout(() => {
-        trail.remove();
-      }, 1000);
-    }
+    // Navigation
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    // Mouse move event for heart trail
-    document.addEventListener('mousemove', (e) => {
-      // Limit the rate of heart creation
-      if (Math.random() > 0.9) {
-        createHeartTrail(e);
-      }
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Close mobile menu if open
+        document.getElementById('mobile-menu').classList.remove('active');
+      });
     });
     
-    // Touch move event for heart trail (mobile)
-    document.addEventListener('touchmove', (e) => {
-      if (Math.random() > 0.7) {
-        createHeartTrail({
-          clientX: e.touches[0].clientX,
-          clientY: e.touches[0].clientY
-        });
-      }
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileToggle.addEventListener('click', function() {
+      mobileMenu.classList.toggle('active');
     });
     
-    // Initialize
-    window.addEventListener('load', () => {
-      createHearts();
-      createParticles();
-      createFloatingHearts();
-      
-      // Auto refresh hearts periodically
-      setInterval(() => {
-        createHearts();
-      }, 20000);
-      
-      // Auto refresh floating hearts periodically
-      setInterval(() => {
-        createFloatingHearts();
-      }, 30000);
-    });
+    // Initialize health metrics
+    updateHealthMetrics();
+    
+    // Initialize audio
+    initAudio();
   </script>
 </body>
 </html>
